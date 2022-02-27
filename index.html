@@ -1,0 +1,237 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>yellowj的博客</title><meta name="author" content="Devin"><meta name="copyright" content="Devin"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta property="og:type" content="website">
+<meta property="og:title" content="yellowj的博客">
+<meta property="og:url" content="http://devinhj.cn/index.html">
+<meta property="og:site_name" content="yellowj的博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://devinhj.cn/images/avatar.jpeg">
+<meta property="article:author" content="Devin">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://devinhj.cn/images/avatar.jpeg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://devinhj.cn/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2022-02-27 17:12:19'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }const asideStatus = saveToLocal.get('aside-status')
+if (asideStatus !== undefined) {
+   if (asideStatus === 'hide') {
+     document.documentElement.classList.add('hide-aside')
+   } else {
+     document.documentElement.classList.remove('hide-aside')
+   }
+}})()</script><link rel="stylesheet" href="/gitcalendar/css/gitcalendar.css"/><meta name="generator" content="Hexo 5.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/images/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div></div></div><div id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">yellowj的博客</a></span><span id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="site-info"><h1 id="site-title">yellowj的博客</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/hj0503" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/devinhj@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/05/12/JavaScript-%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/" title="JavaScript-函数柯里化">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JavaScript-函数柯里化"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/05/12/JavaScript-%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/" title="JavaScript-函数柯里化">JavaScript-函数柯里化</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-12T09:36:22.000Z" title="发表于 2021-05-12 17:36:22">2021-05-12</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-07-22T14:13:06.181Z" title="更新于 2021-07-22 22:13:06">2021-07-22</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/JavaScript/">JavaScript</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag article-meta__icon"></i><a class="article-meta__tags" href="/tags/JavaScript/">JavaScript</a></span></div><div class="content">定义</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/04/20/%E4%BA%8C%E5%8F%89%E6%A0%91/" title="二叉树">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="二叉树"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/04/20/%E4%BA%8C%E5%8F%89%E6%A0%91/" title="二叉树">二叉树</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-04-20T11:45:30.000Z" title="发表于 2021-04-20 19:45:30">2021-04-20</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-07-22T14:13:06.183Z" title="更新于 2021-07-22 22:13:06">2021-07-22</time></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag article-meta__icon"></i><a class="article-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></span></div><div class="content">二叉树相关知识点
+二叉树概念
+二叉树分类
+满二叉树
+完全二叉树
+
+
+二叉搜索树
+遍历
+中序遍历
+前序遍历
+后序遍历
+
+
+
+</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/04/02/%E4%BB%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E5%9C%B0%E5%9D%80%E6%A0%8F%E8%BE%93%E5%85%A5url%E5%88%B0%E9%A1%B5%E9%9D%A2%E5%B1%95%E7%A4%BA%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/" title="从浏览器地址栏输入url到页面展示发生了什么！">     <img class="post_bg" src="/../images/Vite.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="从浏览器地址栏输入url到页面展示发生了什么！"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/04/02/%E4%BB%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E5%9C%B0%E5%9D%80%E6%A0%8F%E8%BE%93%E5%85%A5url%E5%88%B0%E9%A1%B5%E9%9D%A2%E5%B1%95%E7%A4%BA%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/" title="从浏览器地址栏输入url到页面展示发生了什么！">从浏览器地址栏输入url到页面展示发生了什么！</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-04-02T07:37:15.000Z" title="发表于 2021-04-02 15:37:15">2021-04-02</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-07-22T14:13:06.183Z" title="更新于 2021-07-22 22:13:06">2021-07-22</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/css/">css</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag article-meta__icon"></i><a class="article-meta__tags" href="/tags/css/">css</a></span></div><div class="content">前言这个问题一直都是面试中出现频率最高的几道题之一了，网上有各种各样的答案，但是很多都不是很具体和详细，如果是应付面试可能还行，但是为了可以深入了解整个过程，这里对于这个问题做个详细的梳理
+url编码
+</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/02/25/localStorage%E4%B8%8D%E5%90%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E5%A4%A7%E5%B0%8F%E6%B5%8B%E8%AF%95/" title="localStorage不同浏览器大小测试">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="localStorage不同浏览器大小测试"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/02/25/localStorage%E4%B8%8D%E5%90%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E5%A4%A7%E5%B0%8F%E6%B5%8B%E8%AF%95/" title="localStorage不同浏览器大小测试">localStorage不同浏览器大小测试</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-02-25T07:26:56.000Z" title="发表于 2021-02-25 15:26:56">2021-02-25</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-07-22T14:13:06.182Z" title="更新于 2021-07-22 22:13:06">2021-07-22</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/javascript/">javascript</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag article-meta__icon"></i><a class="article-meta__tags" href="/tags/javascript/">javascript</a></span></div><div class="content">
+本篇文章不针对localStorage用法进行讲解了
+
+我们可以通过以下方法进行统计12345678910111213141516171819202122232425if (!window.localStorage) &#123;  console.log(&#x27;当前浏览器不支持localStorage!&#x27;);&#125;let test = &#x27;0123456789&#x27;;const add = function (num) &#123;  num += num;  if (num.length == 10240) &#123;    test = num;    return;  &#125;  add(num);&#125;;add(test);let sum = test;const show = setInterval(function () &#123;  sum += test;  try &#123;    window.localStorage.removeItem(&#x27;test&#x27;);    window.localS ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/02/06/Vue3.0UI%E7%BB%84%E4%BB%B6%E5%BA%93%E5%AF%B9%E6%AF%94/" title="Vue3.0UI组件库对比">     <img class="post_bg" src="/../images/Vue.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue3.0UI组件库对比"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/02/06/Vue3.0UI%E7%BB%84%E4%BB%B6%E5%BA%93%E5%AF%B9%E6%AF%94/" title="Vue3.0UI组件库对比">Vue3.0UI组件库对比</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-02-06T13:32:04.000Z" title="发表于 2021-02-06 21:32:04">2021-02-06</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-07-22T14:13:06.181Z" title="更新于 2021-07-22 22:13:06">2021-07-22</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/">前端框架</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag article-meta__icon"></i><a class="article-meta__tags" href="/tags/Vue/">Vue</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/Vue3-0/">Vue3.0</a></span></div><div class="content">前言本篇文章主要是对 pc 端的各大组件库进行分析比较，目前支持 Vue3.0 版本的 UI 组件库有Element Plus、Element3、Ant Design Vue
+Element Plus介绍：饿了么前端团队开发一套为开发者、设计师和产品经理准备的基于 Vue 3.0 的桌面端组件库Star：8.4k项目特点：
+
+
+团队维护
+支持 TypeScript
+常规支持：多语言、自定义主题、按需引入、内置过渡动画
+文档详细，组件齐全
+支持响应式布局，提供基于断点的隐藏类
+适合常规 pc 端项目
+
+
+Ant Design Vue(Vue3.0 版本)Star：13.6(和 Vue2.x 版本一起的 Star 数)
+
+
+个人维护，挂着 ant design 头衔
+支持 TypeScript
+常规支持：多语言、自定义主题、按需引入
+文档详细，组件齐全
+支持响应式布局
+适合常规 pc 端项目
+
+
+Element3fork的elementui代码改写，教育行业团队学习项目，不够稳定，随时可能停止维护
+其他
+
+
+
+Element Plus
+Ant Design Vue
+ps
+
+
+
+写法
+模板  ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/02/04/Vite/" title="Vite - 快就一个字，我只说一次">     <img class="post_bg" src="/../images/Vite.svg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vite - 快就一个字，我只说一次"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/02/04/Vite/" title="Vite - 快就一个字，我只说一次">Vite - 快就一个字，我只说一次</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-02-04T14:53:20.000Z" title="发表于 2021-02-04 22:53:20">2021-02-04</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-07-22T14:13:06.181Z" title="更新于 2021-07-22 22:13:06">2021-07-22</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/">构建工具</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag article-meta__icon"></i><a class="article-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/Vite/">Vite</a></span></div><div class="content">
+在学习 Vite 之前，可以先了解下基于浏览器 native 的 ES module、esbuild、Rollup、
+
+什么是 Vite借用作者的原话：
+
+Vite，一个基于浏览器原生 ES module 的开发服务器。利用浏览器去解析 imports，在服务器端按需编译返回，完全跳过了打包这个概念，服务器随起随用。同时不仅有 Vue 文件支持，还搞定了热更新，而且热更新的速度不会随着模块增多而变慢。针对生产环境则可以把同一份代码用 rollup 打包。虽然现在还比较粗糙，但这个方向我觉得是有潜力的，做得好可以彻底解决改一行代码等半天热更新的问题。英文文档，中文文档
+
+Vite 特性介绍Vite 主打特点就是轻快冷服务启动。冷服务的意思是，在开发预览中，它是不进行打包的。开发中可以实现热更新，也就是说在你开发的时候，只要一保存，结果就会更新。按需进行更新编译，不会刷新全部 DOM 节点。这功能会加快我们的开发流程度。
+Vite vs Vue Cli
+从几个方面讲
+开发服务器使用 ESM
+依赖预编译(esbuild)
+热更新
+生产环境使用Rollup
+
+一、开发服务器使用 ESM在开发 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/01/28/css%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8sass%E7%94%A8%E6%B3%95/" title="CSS预处理器Sass">     <img class="post_bg" src="/../images/sass.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CSS预处理器Sass"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/01/28/css%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8sass%E7%94%A8%E6%B3%95/" title="CSS预处理器Sass">CSS预处理器Sass</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-01-28T14:52:25.000Z" title="发表于 2021-01-28 22:52:25">2021-01-28</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-07-22T14:13:06.182Z" title="更新于 2021-07-22 22:13:06">2021-07-22</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/css/">css</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag article-meta__icon"></i><a class="article-meta__tags" href="/tags/css/">css</a></span></div><div class="content">1、sass简介Sass是一款强化CSS的辅助工具，它在CSS语法的基础上增加了变量variables、嵌套nested rules、混合mixins、导入inline imports 等高级功能，这些拓展令CSS更加强大与优雅。使用Sass以及Sass的样式库（如 Compass）有助于更好地组织管理样式文件，以及更高效地开发项目。
+2、sass常用功能这里就不展开对各个功能
+2.1 父选择器 &amp;2.2 数据类型2.3 运算2.4 函数2.5 差值语句实战element中sass用法sass高级用法</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/01/28/css%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83-BEM/" title="css命名规范-BEM">     <img class="post_bg" src="/../images/Vite.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="css命名规范-BEM"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/01/28/css%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83-BEM/" title="css命名规范-BEM">css命名规范-BEM</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-01-28T08:35:15.000Z" title="发表于 2021-01-28 16:35:15">2021-01-28</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-07-22T14:13:06.182Z" title="更新于 2021-07-22 22:13:06">2021-07-22</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/css/">css</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag article-meta__icon"></i><a class="article-meta__tags" href="/tags/css/">css</a></span></div><div class="content">介绍BEM（块，元素，修饰符）是基于组件的 Web 开发方法。其背后的想法是将用户界面分为独立的块。即使使用复杂的 UI，这也使界面开发变得容易和快速，并且允许重用现有代码而无需复制和粘贴。
+使用准则Block__Element--Modifier，可以看到命名规范由Block、Element、Modifier组成，Block和Element之间用双下划线(__)组成，Element和Modifier之间用双中线(--)组成，那么这三个部分分别代表什么呢Block就像我们的页面，都是由一个一个模块组成，比如说头部header、底部footer、侧边栏asider、内容区域content等等，甚至还可以拆分成更小更多的模块，此时 Block 就可以根据当前的模块名称来命名，Block 可以相互嵌套ElementElement是描述当前元素的目的或者说这是什么，而不是状态。Element可以互相嵌套，但是Element只是Block的一部分，而不是另外一个Element，也就是说Element不能定义层次结构如：blobk__ele1__ele2ModifierModifier是描述当前元 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/01/14/vue3.0%E5%8E%9F%E7%90%86%E7%AF%87-%E5%93%8D%E5%BA%94%E5%BC%8F/" title="Vue3.0原理篇-响应式">     <img class="post_bg" src="/../images/Vue.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue3.0原理篇-响应式"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/01/14/vue3.0%E5%8E%9F%E7%90%86%E7%AF%87-%E5%93%8D%E5%BA%94%E5%BC%8F/" title="Vue3.0原理篇-响应式">Vue3.0原理篇-响应式</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-01-14T02:20:21.000Z" title="发表于 2021-01-14 10:20:21">2021-01-14</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-07-22T14:13:06.183Z" title="更新于 2021-07-22 22:13:06">2021-07-22</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/">前端框架</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag article-meta__icon"></i><a class="article-meta__tags" href="/tags/Vue/">Vue</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/Vue3-0/">Vue3.0</a></span></div><div class="content">vue2.x版本响应式Object.definePropertyvue3.x版本响应式Proxyproxy对比Object.defineProperty</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/01/10/qiankun%E5%BE%AE%E6%9C%8D%E5%8A%A1/" title="qiankun微服务">     <img class="post_bg" src="/../images/qiankun.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="qiankun微服务"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/01/10/qiankun%E5%BE%AE%E6%9C%8D%E5%8A%A1/" title="qiankun微服务">qiankun微服务</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-01-10T02:20:21.000Z" title="发表于 2021-01-10 10:20:21">2021-01-10</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-07-22T14:13:06.182Z" title="更新于 2021-07-22 22:13:06">2021-07-22</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag article-meta__icon"></i><a class="article-meta__tags" href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</a></span></div><div class="content">一、qiankun 介绍1.1 主应用中注册子应用12345678910111213141516import &#123; registerMicroApps, start &#125; from &#x27;qiankun&#x27;;registerMicroApps([  &#123;    name: &#x27;react app&#x27;, // 微应用名称，必须确保唯一    entry: &#x27;//localhost:7100&#x27;, // 微应用的入口（微应用项目地址）    container: &#x27;#yourContainer&#x27;, // 微应用容器节点选择器或者Element实例    activeRule: &#x27;/yourActiveRule&#x27;, // 微应用激活规则  &#125;,  &#123;    name: &#x27;vue app&#x27;,    entry: &#123; scripts: [&#x27;//localhost:7100/main.js&#x27;] &#125;,    c ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="/images/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Devin</div><div class="author-info__description">天黑终究会天亮</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/hj0503"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/hj0503" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/devinhj@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/05/12/JavaScript-%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/" title="JavaScript-函数柯里化"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JavaScript-函数柯里化"/></a><div class="content"><a class="title" href="/2021/05/12/JavaScript-%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/" title="JavaScript-函数柯里化">JavaScript-函数柯里化</a><time datetime="2021-05-12T09:36:22.000Z" title="发表于 2021-05-12 17:36:22">2021-05-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/20/%E4%BA%8C%E5%8F%89%E6%A0%91/" title="二叉树"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="二叉树"/></a><div class="content"><a class="title" href="/2021/04/20/%E4%BA%8C%E5%8F%89%E6%A0%91/" title="二叉树">二叉树</a><time datetime="2021-04-20T11:45:30.000Z" title="发表于 2021-04-20 19:45:30">2021-04-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/02/%E4%BB%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E5%9C%B0%E5%9D%80%E6%A0%8F%E8%BE%93%E5%85%A5url%E5%88%B0%E9%A1%B5%E9%9D%A2%E5%B1%95%E7%A4%BA%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/" title="从浏览器地址栏输入url到页面展示发生了什么！"><img src="/../images/Vite.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="从浏览器地址栏输入url到页面展示发生了什么！"/></a><div class="content"><a class="title" href="/2021/04/02/%E4%BB%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E5%9C%B0%E5%9D%80%E6%A0%8F%E8%BE%93%E5%85%A5url%E5%88%B0%E9%A1%B5%E9%9D%A2%E5%B1%95%E7%A4%BA%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/" title="从浏览器地址栏输入url到页面展示发生了什么！">从浏览器地址栏输入url到页面展示发生了什么！</a><time datetime="2021-04-02T07:37:15.000Z" title="发表于 2021-04-02 15:37:15">2021-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/25/localStorage%E4%B8%8D%E5%90%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E5%A4%A7%E5%B0%8F%E6%B5%8B%E8%AF%95/" title="localStorage不同浏览器大小测试"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="localStorage不同浏览器大小测试"/></a><div class="content"><a class="title" href="/2021/02/25/localStorage%E4%B8%8D%E5%90%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E5%A4%A7%E5%B0%8F%E6%B5%8B%E8%AF%95/" title="localStorage不同浏览器大小测试">localStorage不同浏览器大小测试</a><time datetime="2021-02-25T07:26:56.000Z" title="发表于 2021-02-25 15:26:56">2021-02-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/06/Vue3.0UI%E7%BB%84%E4%BB%B6%E5%BA%93%E5%AF%B9%E6%AF%94/" title="Vue3.0UI组件库对比"><img src="/../images/Vue.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue3.0UI组件库对比"/></a><div class="content"><a class="title" href="/2021/02/06/Vue3.0UI%E7%BB%84%E4%BB%B6%E5%BA%93%E5%AF%B9%E6%AF%94/" title="Vue3.0UI组件库对比">Vue3.0UI组件库对比</a><time datetime="2021-02-06T13:32:04.000Z" title="发表于 2021-02-06 21:32:04">2021-02-06</time></div></div></div></div></div><div class="card-widget card-categories"><div class="card-content"><div class="item-headline"><i class="fas fa-folder-open"></i><span>分类</span></div><ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/JavaScript/"><span class="card-category-list-name">JavaScript</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/css/"><span class="card-category-list-name">css</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/javascript/"><span class="card-category-list-name">javascript</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/"><span class="card-category-list-name">前端</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/"><span class="card-category-list-name">前端框架</span><span class="card-category-list-count">6</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/"><span class="card-category-list-name">构建工具</span><span class="card-category-list-count">1</span></a></li>
+            
+            </ul></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/JavaScript/" style="font-size: 1.1em; color: #999">JavaScript</a> <a href="/tags/Vite/" style="font-size: 1.1em; color: #999">Vite</a> <a href="/tags/Vue/" style="font-size: 1.5em; color: #99a9bf">Vue</a> <a href="/tags/Vue3-0/" style="font-size: 1.5em; color: #99a9bf">Vue3.0</a> <a href="/tags/css/" style="font-size: 1.3em; color: #99a1ac">css</a> <a href="/tags/javascript/" style="font-size: 1.1em; color: #999">javascript</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 1.1em; color: #999">前端</a> <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" style="font-size: 1.1em; color: #999">微服务</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 1.1em; color: #999">数据结构</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/05/"><span class="card-archive-list-date">五月 2021</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/04/"><span class="card-archive-list-date">四月 2021</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/02/"><span class="card-archive-list-date">二月 2021</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/01/"><span class="card-archive-list-date">一月 2021</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/12/"><span class="card-archive-list-date">十二月 2020</span><span class="card-archive-list-count">2</span></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">14</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2022-02-27T09:12:19.248Z"></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Devin</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">欢迎来到我的博客</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><div class="js-pjax"><script>function subtitleType () {
+  if (true) { 
+    var typed = new Typed("#subtitle", {
+      strings: "不要害怕生命中不完美的角落,阳光在每个裂缝中散落,裂缝中的阳光,devin hj".split(","),
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50
+    })
+  } else {
+    document.getElementById("subtitle").innerHTML = '不要害怕生命中不完美的角落'
+  }
+}
+
+if (true) {
+  if (typeof Typed === 'function') subtitleType()
+  else $.getScript('https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js', subtitleType)
+} else {
+  subtitleType()
+}</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script><script src="/gitcalendar/js/gitcalendar.js"></script></div></body></html>

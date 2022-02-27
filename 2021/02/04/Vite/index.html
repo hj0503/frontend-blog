@@ -1,0 +1,231 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Vite - 快就一个字，我只说一次 | yellowj的博客</title><meta name="keywords" content="前端,Vite"><meta name="author" content="Devin"><meta name="copyright" content="Devin"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="在学习 Vite 之前，可以先了解下基于浏览器 native 的 ES module、esbuild、Rollup、  什么是 Vite借用作者的原话：  Vite，一个基于浏览器原生 ES module 的开发服务器。利用浏览器去解析 imports，在服务器端按需编译返回，完全跳过了打包这个概念，服务器随起随用。同时不仅有 Vue 文件支持，还搞定了热更新，而且热更新的速度不会随着模块增多而">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vite - 快就一个字，我只说一次">
+<meta property="og:url" content="http://devinhj.cn/2021/02/04/Vite/index.html">
+<meta property="og:site_name" content="yellowj的博客">
+<meta property="og:description" content="在学习 Vite 之前，可以先了解下基于浏览器 native 的 ES module、esbuild、Rollup、  什么是 Vite借用作者的原话：  Vite，一个基于浏览器原生 ES module 的开发服务器。利用浏览器去解析 imports，在服务器端按需编译返回，完全跳过了打包这个概念，服务器随起随用。同时不仅有 Vue 文件支持，还搞定了热更新，而且热更新的速度不会随着模块增多而">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://devinhj.cn/images/Vite.svg">
+<meta property="article:published_time" content="2021-02-04T14:53:20.000Z">
+<meta property="article:modified_time" content="2021-07-22T14:13:06.181Z">
+<meta property="article:author" content="Devin">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="Vite">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://devinhj.cn/images/Vite.svg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://devinhj.cn/2021/02/04/Vite/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-07-22 22:13:06'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }const asideStatus = saveToLocal.get('aside-status')
+if (asideStatus !== undefined) {
+   if (asideStatus === 'hide') {
+     document.documentElement.classList.add('hide-aside')
+   } else {
+     document.documentElement.classList.remove('hide-aside')
+   }
+}})()</script><link rel="stylesheet" href="/gitcalendar/css/gitcalendar.css"/><meta name="generator" content="Hexo 5.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/images/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/../images/Vite.svg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">yellowj的博客</a></span><span id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><h1 class="post-title">Vite - 快就一个字，我只说一次</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-02-04T14:53:20.000Z" title="发表于 2021-02-04 22:53:20">2021-02-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-07-22T14:13:06.181Z" title="更新于 2021-07-22 22:13:06">2021-07-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/">构建工具</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>在学习 Vite 之前，可以先了解下<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/import">基于浏览器 native 的 ES module</a>、<a target="_blank" rel="noopener" href="https://esbuild.github.io/">esbuild</a>、<a target="_blank" rel="noopener" href="https://www.rollupjs.com/">Rollup</a>、</p>
+</blockquote>
+<h2 id="什么是-Vite"><a href="#什么是-Vite" class="headerlink" title="什么是 Vite"></a>什么是 Vite</h2><p>借用作者的原话：</p>
+<blockquote>
+<p>Vite，一个基于浏览器原生 ES module 的开发服务器。利用浏览器去解析 imports，在服务器端按需编译返回，完全跳过了打包这个概念，服务器随起随用。同时不仅有 Vue 文件支持，还搞定了热更新，而且热更新的速度不会随着模块增多而变慢。针对生产环境则可以把同一份代码用 rollup 打包。虽然现在还比较粗糙，但这个方向我觉得是有潜力的，做得好可以彻底解决改一行代码等半天热更新的问题。<br><a target="_blank" rel="noopener" href="https://vitejs.dev/">英文文档</a>，<a target="_blank" rel="noopener" href="https://cn.vitejs.dev/">中文文档</a></p>
+</blockquote>
+<h2 id="Vite-特性介绍"><a href="#Vite-特性介绍" class="headerlink" title="Vite 特性介绍"></a>Vite 特性介绍</h2><p>Vite 主打特点就是轻快冷服务启动。冷服务的意思是，在开发预览中，它是不进行打包的。<br>开发中可以实现热更新，也就是说在你开发的时候，只要一保存，结果就会更新。<br>按需进行更新编译，不会刷新全部 DOM 节点。这功能会加快我们的开发流程度。</p>
+<h2 id="Vite-vs-Vue-Cli"><a href="#Vite-vs-Vue-Cli" class="headerlink" title="Vite vs Vue Cli"></a>Vite vs Vue Cli</h2><p><img src="/images/Vite/ViteVueCli.png" alt="Vite vs VueCli"></p>
+<h2 id="从几个方面讲"><a href="#从几个方面讲" class="headerlink" title="从几个方面讲"></a>从几个方面讲</h2><ul>
+<li>开发服务器使用 ESM</li>
+<li>依赖预编译<code>(esbuild)</code></li>
+<li>热更新</li>
+<li>生产环境使用<code>Rollup</code></li>
+</ul>
+<h2 id="一、开发服务器使用-ESM"><a href="#一、开发服务器使用-ESM" class="headerlink" title="一、开发服务器使用 ESM"></a>一、开发服务器使用 ESM</h2><p>在开发服务器，Vite 利用浏览器原生的 ES 模块支持，在 script 标签里设置<code>type=&quot;module&quot;</code>，然后使用模块内容</p>
+<ul>
+<li>传统的“bundlers”需要在开发服务器能够显示任何内容之前完全构建整个应用程序</li>
+<li>这包括对每个文件的导入/导出关系的全面解析!</li>
+<li>应用程序越大，开发服务器启动越慢</li>
+<li>代码分割有助于生成性能，但不能帮助开发性能</li>
+</ul>
+<h3 id="Vite-是怎么利用-ES-module-做的"><a href="#Vite-是怎么利用-ES-module-做的" class="headerlink" title="Vite 是怎么利用 ES module 做的"></a>Vite 是怎么利用 ES module 做的</h3><ul>
+<li><code>&lt;script type=&quot;module&quot;&gt;</code></li>
+<li>浏览器解析<code>ES module</code>的 imports</li>
+<li>开发服务器接收针对各个模块的 HTTP 请求</li>
+</ul>
+<p>运行 Vite 项目，可以看到 html 中的一段代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;module&quot;</span>&gt;</span><br><span class="line">  <span class="keyword">import</span> &#123;createApp&#125; <span class="keyword">from</span> <span class="string">&#x27;/@modules/vue&#x27;</span> <span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">&#x27;/App.vue&#x27;</span></span><br><span class="line">  createApp(App).mount(<span class="string">&#x27;#app&#x27;</span>)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>vite 利用 ES module，把构建 vue 项目直接放在放在浏览器中执行，可以做到以下两点：</p>
+<h4 id="去掉打包过程"><a href="#去掉打包过程" class="headerlink" title="去掉打包过程"></a>去掉打包过程</h4><p>打包的概念是开发者利用打包工具将应用各个模块集合在一起形成 bundle，以一定规则读取模块的代码——以便在不支持模块化的浏览器里使用。<br>vite 利用浏览器原生支持模块化导入这一特性，省略了对模块的组装，也就不需要生成 bundle，所以打包这一步就可以省略了。</p>
+<h4 id="实现按需加载"><a href="#实现按需加载" class="headerlink" title="实现按需加载"></a>实现按需加载</h4><p>webpack 之类的打包工具会将各模块提前打包进 bundle 里，但打包的过程是静态的，不管某个模块的代码是否执行到，这个模块都要打包到 bundle 里，这样的坏处就是随着项目越来越大打包后的 bundle 也越来越大。为了减小 bundle 大小，一般会使用动态引入的方式异步加载模块，或者使用 tree shaking 等方式尽量去掉未引入的模块<br>vite 可以只在需要某个模块的时候动态的引入它，而不需要提前打包，虽然只能用在开发环境<br><img src="/images/Vite/ESMBasedDevServer.png" alt="Native ESM based dev server"></p>
+<h4 id="ES-module-带来的问题"><a href="#ES-module-带来的问题" class="headerlink" title="ES module 带来的问题"></a>ES module 带来的问题</h4><p>原生<code>ESM</code>不支持裸导入，<code>import &#123; createApp &#125; from &#39;vue&#39;</code></p>
+<ul>
+<li>使用<a target="_blank" rel="noopener" href="https://github.com/guybedford/es-module-lexer">es-module-lexer</a> + <a target="_blank" rel="noopener" href="https://github.com/Rich-Harris/magic-string">magic-string</a>重写轻量级模块<ul>
+<li><code>es-module-lexer</code>分析代码中的模块加载导出关系</li>
+</ul>
+</li>
+<li>没有完整的 AST 解析/转换，非常快(对于大多数文件&lt;1ms)</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Source;</span><br><span class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span>;</span><br><span class="line"></span><br><span class="line">Rewritten;</span><br><span class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">&#x27;/@modules/vue&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>浏览器里使用 ES module 是使用 http 请求拿到模块，所以 vite 必须提供一个 web server 去代理这些模块，vite 通过对请求路径的劫持获取资源的内容返回给浏览器，不过 vite 对于模块导入做了特殊处理。</p>
+<ul>
+<li>在 koa 中间件里获取请求 body</li>
+<li>通过 es-module-lexer 解析资源 ast 拿到 import 的内容</li>
+<li>判断 import 的资源是否是绝对路径，绝对视为 npm 模块</li>
+<li>返回处理后的资源路径：”vue” =&gt; “/@modules/vue”，vite 在 plugin 中把文件路径 rewrite 成了<code>@modules</code></li>
+</ul>
+<h3 id="vue-文件编译"><a href="#vue-文件编译" class="headerlink" title="vue 文件编译"></a>vue 文件编译</h3><p>在 Vite1 中，会把.vue 文件拆成三个请求，分别是<code>script</code>、<code>template</code>，<code>style</code>，浏览器会先收到包含 script 逻辑的 App.vue 的响应，然后解析到 template、 style 的路径后，会再次发起 HTTP 请求来请求对应的资源，此时 Vite 对其拦截并再次处理后返回相应的内容。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; ref, reactive &#125; <span class="keyword">from</span> <span class="string">&#x27;/@modules/vue.js&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> __script = &#123;</span><br><span class="line">  name: <span class="string">&#x27;HelloWorld&#x27;</span>,</span><br><span class="line">  <span class="function"><span class="title">setup</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">    <span class="keyword">const</span> count = ref(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">const</span> object = reactive(&#123;</span><br><span class="line">      foo: <span class="string">&#x27;bar&#x27;</span>,</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      count,</span><br><span class="line">      object,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将 style 拆分成 /HelloWorld.vue?type=style 请求，由浏览器继续发起请求获取样式</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;/src/components/HelloWorld.vue?type=style&amp;index=0&#x27;</span>;</span><br><span class="line">__script.__scopeId = <span class="string">&#x27;data-v-62a9ebed&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将 template 拆分成 /HelloWorld.vue?type=template 请求，由浏览器继续发起请求获取 render function</span></span><br><span class="line"><span class="keyword">import</span> &#123; render <span class="keyword">as</span> __render &#125; <span class="keyword">from</span> <span class="string">&#x27;/src/components/HelloWorld.vue?type=template&#x27;</span>;</span><br><span class="line">__script.render = __render;</span><br><span class="line">__script.__hmrId = <span class="string">&#x27;/src/components/HelloWorld.vue&#x27;</span>;</span><br><span class="line">__script.__file =</span><br><span class="line">  <span class="string">&#x27;/Users/admin/huangjun/hjjobs/Vue/hello-vite/src/components/HelloWorld.vue&#x27;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> __script;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在 Vite2 中，script 和 template 合并成一起请求</p>
+</blockquote>
+<p>这一步的拆分的核心逻辑是根据 URL 的 query 参数来做不同的处理：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 如果没有 query 的 type，比如直接请求的 /App.vue</span></span><br><span class="line"><span class="keyword">if</span> (!query.type) &#123;</span><br><span class="line">  ctx.type = <span class="string">&#x27;js&#x27;</span>;</span><br><span class="line">  ctx.body = compileSFCMain(descriptor, filePath, publicPath); <span class="comment">// 编译 App.vue，编译成上面说的带有 script 内容，以及 template 和 style 链接的形式。</span></span><br><span class="line">  <span class="keyword">return</span> etagCacheCheck(ctx); <span class="comment">// ETAG 缓存检测相关逻辑</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果 query 的 type 是 template，比如 /App.vue?type=template&amp;xxx</span></span><br><span class="line"><span class="keyword">if</span> (query.type === <span class="string">&#x27;template&#x27;</span>) &#123;</span><br><span class="line">  ctx.type = <span class="string">&#x27;js&#x27;</span>;</span><br><span class="line">  ctx.body = compileSFCTemplate(); <span class="comment">// 编译 template 生成 render function</span></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="keyword">return</span> etagCacheCheck(ctx);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果 query 的 type 是 style，比如 /App.vue?type=style&amp;xxx</span></span><br><span class="line"><span class="keyword">if</span> (query.type === <span class="string">&#x27;style&#x27;</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> index = <span class="built_in">Number</span>(query.index);</span><br><span class="line">  <span class="keyword">const</span> styleBlock = descriptor.styles[index];</span><br><span class="line">  <span class="keyword">const</span> result = <span class="keyword">await</span> compileSFCStyle(); <span class="comment">// 编译 style</span></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="keyword">if</span> (query.module != <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="comment">// 如果是 css module</span></span><br><span class="line">    ctx.type = <span class="string">&#x27;js&#x27;</span>;</span><br><span class="line">    ctx.body = <span class="string">`export default <span class="subst">$&#123;<span class="built_in">JSON</span>.stringify(result.modules)&#125;</span>`</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 正常 css</span></span><br><span class="line">    ctx.type = <span class="string">&#x27;css&#x27;</span>;</span><br><span class="line">    ctx.body = result.code;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="依赖预编译"><a href="#依赖预编译" class="headerlink" title="依赖预编译"></a>依赖预编译</h3><p>在 vite1.x 版本中使用 rollup 进行预编译，vite2.0 中换成 esbuild</p>
+<h4 id="什么是依赖预编译"><a href="#什么是依赖预编译" class="headerlink" title="什么是依赖预编译"></a>什么是依赖预编译</h4><ul>
+<li>默认情况下，Vite 会将 package.json 中生产依赖 dependencies 的部分启用依赖预编译，即会先对该依赖进行编译，然后将编译后的文件缓存在内存中（node_modules/.vite 文件下），在启动 DevServer 时直接请求该缓存内容。</li>
+<li>在 vite.config.js 文件中配置 optimizeDeps 选项可以选择需要或不需要进行预编译的依赖的名称，Vite 则会根据该选项来确定是否对该依赖进行预编译。</li>
+<li>在启动时添加 –force options，可以用来强制重新进行依赖预编译。</li>
+</ul>
+<h4 id="依赖预编译的作用"><a href="#依赖预编译的作用" class="headerlink" title="依赖预编译的作用"></a>依赖预编译的作用</h4><p><strong>1、兼容 CommonJS 和 AMD 模块的依赖</strong><br>因为 Vite 的 DevServer 是基于浏览器的 Natvie ES Module 实现的，所以对于使用的依赖如果是 CommonJS 或 AMD 的模块，则需要进行模块类型的转化（ES Module）。<br><strong>2、减少模块间依赖引用导致过多的请求次数</strong><br>当模块数很大时，如果没有预编译的话，页面加载比<code>bundled</code>更慢，有许多内部模块的依赖尤为突出，比如<code>lodash-es</code><br><img src="/images/Vite/lodash-es.png" alt="Native ESM based dev server"><br><strong>3、编译 tsx、jsx 文件，比 tsc 快 20-30 倍</strong></p>
+<h4 id="依赖预编译实现过程"><a href="#依赖预编译实现过程" class="headerlink" title="依赖预编译实现过程"></a>依赖预编译实现过程</h4><ul>
+<li>读取依赖文件信息</li>
+<li>对比缓存文件的 hash</li>
+<li>缓存是否失效或者未缓存</li>
+<li>处理 optimzeDeps.include 相关依赖</li>
+<li>使用 esbuild 编译依赖</li>
+</ul>
+<h3 id="热更新"><a href="#热更新" class="headerlink" title="热更新"></a>热更新</h3><p>Vite 的热加载原理，其实就是在客户端与服务端建立了一个 websocket 连接，当代码被修改时，服务端发送消息通知客户端去请求修改模块的代码，完成热更新。<br>服务端做的就是监听代码文件的改变，在合适的时机向客户端发送 websocket 信息通知客户端去请求新的模块代码。</p>
+<h3 id="基于Rollup的生成环境构建"><a href="#基于Rollup的生成环境构建" class="headerlink" title="基于Rollup的生成环境构建"></a>基于<code>Rollup</code>的生成环境构建</h3><p>Rollup 是基于 ES2015 的 JavaScript 打包工具。它将小文件打包成一个大文件或者更复杂的库和应用，打包既可用于浏览器和 Node.js 使用。 Rollup 最显著的地方就是能让打包文件体积很小。相比其他 JavaScript 打包工具，Rollup 总能打出更小，更快的包。因为 Rollup 基于 ES2015 模块，比 Webpack 和 Browserify 使用的 CommonJS 模块机制更高效。</p>
+<ul>
+<li>Rollup 是在构建速度、tree-shaking 和输出大小方面表现最好的基于 js 的模块打包器</li>
+<li>它也围绕 ES 模块构建，这与 Vite 的前提一致</li>
+</ul>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><ul>
+<li>为什么开发环境选择<code>esbuild</code>，生成环境选择<code>rollup</code></li>
+<li>esbuild</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Devin</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://devinhj.cn/2021/02/04/Vite/">http://devinhj.cn/2021/02/04/Vite/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://devinhj.cn" target="_blank">yellowj的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a><a class="post-meta__tags" href="/tags/Vite/">Vite</a></div><div class="post_share"><div class="social-share" data-image="/../images/Vite.svg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/02/06/Vue3.0UI%E7%BB%84%E4%BB%B6%E5%BA%93%E5%AF%B9%E6%AF%94/"><img class="prev-cover" src="/../images/Vue.jpeg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Vue3.0UI组件库对比</div></div></a></div><div class="next-post pull-right"><a href="/2021/01/28/css%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8sass%E7%94%A8%E6%B3%95/"><img class="next-cover" src="/../images/sass.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">CSS预处理器Sass</div></div></a></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="/images/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Devin</div><div class="author-info__description">天黑终究会天亮</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/hj0503"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/hj0503" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/devinhj@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="card-content"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Vite"><span class="toc-number">1.</span> <span class="toc-text">什么是 Vite</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vite-%E7%89%B9%E6%80%A7%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.</span> <span class="toc-text">Vite 特性介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vite-vs-Vue-Cli"><span class="toc-number">3.</span> <span class="toc-text">Vite vs Vue Cli</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E5%87%A0%E4%B8%AA%E6%96%B9%E9%9D%A2%E8%AE%B2"><span class="toc-number">4.</span> <span class="toc-text">从几个方面讲</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%BC%80%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8-ESM"><span class="toc-number">5.</span> <span class="toc-text">一、开发服务器使用 ESM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Vite-%E6%98%AF%E6%80%8E%E4%B9%88%E5%88%A9%E7%94%A8-ES-module-%E5%81%9A%E7%9A%84"><span class="toc-number">5.1.</span> <span class="toc-text">Vite 是怎么利用 ES module 做的</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%BB%E6%8E%89%E6%89%93%E5%8C%85%E8%BF%87%E7%A8%8B"><span class="toc-number">5.1.1.</span> <span class="toc-text">去掉打包过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD"><span class="toc-number">5.1.2.</span> <span class="toc-text">实现按需加载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ES-module-%E5%B8%A6%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">5.1.3.</span> <span class="toc-text">ES module 带来的问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-%E6%96%87%E4%BB%B6%E7%BC%96%E8%AF%91"><span class="toc-number">5.2.</span> <span class="toc-text">vue 文件编译</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E9%A2%84%E7%BC%96%E8%AF%91"><span class="toc-number">5.3.</span> <span class="toc-text">依赖预编译</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E4%BE%9D%E8%B5%96%E9%A2%84%E7%BC%96%E8%AF%91"><span class="toc-number">5.3.1.</span> <span class="toc-text">什么是依赖预编译</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E9%A2%84%E7%BC%96%E8%AF%91%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">5.3.2.</span> <span class="toc-text">依赖预编译的作用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E9%A2%84%E7%BC%96%E8%AF%91%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B"><span class="toc-number">5.3.3.</span> <span class="toc-text">依赖预编译实现过程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%83%AD%E6%9B%B4%E6%96%B0"><span class="toc-number">5.4.</span> <span class="toc-text">热更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8ERollup%E7%9A%84%E7%94%9F%E6%88%90%E7%8E%AF%E5%A2%83%E6%9E%84%E5%BB%BA"><span class="toc-number">5.5.</span> <span class="toc-text">基于Rollup的生成环境构建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">5.6.</span> <span class="toc-text">问题</span></a></li></ol></li></ol></div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/05/12/JavaScript-%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/" title="JavaScript-函数柯里化"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JavaScript-函数柯里化"/></a><div class="content"><a class="title" href="/2021/05/12/JavaScript-%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/" title="JavaScript-函数柯里化">JavaScript-函数柯里化</a><time datetime="2021-05-12T09:36:22.000Z" title="发表于 2021-05-12 17:36:22">2021-05-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/20/%E4%BA%8C%E5%8F%89%E6%A0%91/" title="二叉树"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="二叉树"/></a><div class="content"><a class="title" href="/2021/04/20/%E4%BA%8C%E5%8F%89%E6%A0%91/" title="二叉树">二叉树</a><time datetime="2021-04-20T11:45:30.000Z" title="发表于 2021-04-20 19:45:30">2021-04-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/02/%E4%BB%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E5%9C%B0%E5%9D%80%E6%A0%8F%E8%BE%93%E5%85%A5url%E5%88%B0%E9%A1%B5%E9%9D%A2%E5%B1%95%E7%A4%BA%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/" title="从浏览器地址栏输入url到页面展示发生了什么！"><img src="/../images/Vite.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="从浏览器地址栏输入url到页面展示发生了什么！"/></a><div class="content"><a class="title" href="/2021/04/02/%E4%BB%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E5%9C%B0%E5%9D%80%E6%A0%8F%E8%BE%93%E5%85%A5url%E5%88%B0%E9%A1%B5%E9%9D%A2%E5%B1%95%E7%A4%BA%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/" title="从浏览器地址栏输入url到页面展示发生了什么！">从浏览器地址栏输入url到页面展示发生了什么！</a><time datetime="2021-04-02T07:37:15.000Z" title="发表于 2021-04-02 15:37:15">2021-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/25/localStorage%E4%B8%8D%E5%90%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E5%A4%A7%E5%B0%8F%E6%B5%8B%E8%AF%95/" title="localStorage不同浏览器大小测试"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="localStorage不同浏览器大小测试"/></a><div class="content"><a class="title" href="/2021/02/25/localStorage%E4%B8%8D%E5%90%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E5%A4%A7%E5%B0%8F%E6%B5%8B%E8%AF%95/" title="localStorage不同浏览器大小测试">localStorage不同浏览器大小测试</a><time datetime="2021-02-25T07:26:56.000Z" title="发表于 2021-02-25 15:26:56">2021-02-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/06/Vue3.0UI%E7%BB%84%E4%BB%B6%E5%BA%93%E5%AF%B9%E6%AF%94/" title="Vue3.0UI组件库对比"><img src="/../images/Vue.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue3.0UI组件库对比"/></a><div class="content"><a class="title" href="/2021/02/06/Vue3.0UI%E7%BB%84%E4%BB%B6%E5%BA%93%E5%AF%B9%E6%AF%94/" title="Vue3.0UI组件库对比">Vue3.0UI组件库对比</a><time datetime="2021-02-06T13:32:04.000Z" title="发表于 2021-02-06 21:32:04">2021-02-06</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Devin</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">欢迎来到我的博客</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script><script src="/gitcalendar/js/gitcalendar.js"></script></div></body></html>
